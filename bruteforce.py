@@ -44,10 +44,11 @@ def result_display(best_combinations):
     for share in combination:
         print(f"{share['name']} | {share['price']} | {share['profit']} €")
 
-    print(f"\nNombre d'shares à achetés : {len(share['name'])}")
+    print(f"\nNombre d'actions à achetés : {len(share['name'])}")
     print(f"\nPrix total : {total_price}", "€")
-    print(f"\nBenefice après 2 ans : {total_profit}", "€")
-    print("\nTemps d'éxecution : ", time.time() - start_time, "secondes")
+    print(f"\nBenefice après 2 ans en pourcentage: {str(total_profit / total_price * 100)[:5]}", "%")
+    print(f"\nBenefice après 2 ans : {str(total_profit)[:5]}", "€")
+    print("\nTemps d'éxecution : ", str(time.time() - start_time)[:4], "secondes")
 
 
 def main():
