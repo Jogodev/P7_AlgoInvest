@@ -33,6 +33,7 @@ def get_best_combinations(shares):
                 if total_profit > best_profit:
                     best_profit = total_profit
                     best_combination = [total_price, total_profit, combination]
+        # print(len(list(combinations(shares, share))))
     return best_combination
 
 
@@ -44,7 +45,7 @@ def result_display(best_combinations):
     for share in combination:
         print(f"{share['name']} | {share['price']} | {share['profit']} €")
 
-    print(f"\nNombre d'actions à achetés : {len(share['name'])}")
+    print(f"\nNombre d'actions à achetés : {len(combination)}")
     print(f"\nPrix total : {total_price}", "€")
     print(f"\nBenefice après 2 ans en pourcentage: {str(total_profit / total_price * 100)[:5]}", "%")
     print(f"\nBenefice après 2 ans : {str(total_profit)[:5]}", "€")
