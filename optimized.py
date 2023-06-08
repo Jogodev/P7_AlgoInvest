@@ -20,8 +20,8 @@ def read_file(path):
             if float(share['price']) > 0 and float(share['profit']) > 0:
                 name = share['name']
                 price = int(float(share['price']) * 100)
-                profit = round((float(share['profit']) / 100) * (float(share['price']) * 100), 2)
-                share = {"name": name, "price": price, "profit": int(profit)}
+                profit = int((float(share['profit']) / 100) * (float(share['price']) * 100))
+                share = {"name": name, "price": price, "profit": profit}
                 shares.append(share)
     return shares
 
@@ -29,7 +29,6 @@ def read_file(path):
 def knapsack(shares):
     budget = int(MAX_BUDGET * 100)
     matrix = [[0 for x in range(budget + 1)] for x in range(len(shares) + 1)]
-
     for i in tqdm(range(1, len(shares) + 1)):
         for j in range(1, budget + 1):
             if shares[i - 1]['price'] <= j:
@@ -59,9 +58,9 @@ def result_display(best_combinations):
         print(f"{share['name']} | {share['price'] / 100} | {share['profit'] / 100} €")
 
     print(f"\nNombre d'actions à achetés : {len(combination)}")
-    print(f"\nPrix total : {round(total_price / 100, 2)}", "€")
+    print(f"\nPrix total : {total_price / 100}", "€")
     print(f"\nBenefice après 2 ans en pourcentage: {str((total_profit / total_price * 100) * 100)[:5]}", "%")
-    print(f"\nBenefice après 2 ans : {round(total_profit, 2)}", "€")
+    print(f"\nBenefice après 2 ans : {total_profit}", "€")
     print("\nTemps d'éxecution : ", str(time.time() - start_time)[:4], "secondes")
 
 

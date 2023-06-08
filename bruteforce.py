@@ -33,7 +33,6 @@ def get_best_combinations(shares):
                 if total_profit > best_profit:
                     best_profit = total_profit
                     best_combination = [total_price, total_profit, combination]
-        # print(len(list(combinations(shares, share))))
     return best_combination
 
 
