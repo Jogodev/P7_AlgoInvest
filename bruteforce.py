@@ -1,5 +1,6 @@
 from itertools import combinations
 from tqdm import tqdm
+import psutil
 import time
 import csv
 
@@ -49,6 +50,7 @@ def result_display(best_combinations):
     print(f"\nBenefice après 2 ans en pourcentage: {str(total_profit / total_price * 100)[:5]}", "%")
     print(f"\nBenefice après 2 ans : {str(total_profit)[:5]}", "€")
     print("\nTemps d'éxecution : ", str(time.time() - start_time)[:4], "secondes")
+    print(f"\nMémoire utilisé : {round(psutil.Process().memory_info().rss / 1024 ** 2, 4)}", "MB")
 
 
 def main():

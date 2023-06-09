@@ -1,13 +1,13 @@
 import time
-
+import psutil
 from tqdm import tqdm
 
 import csv
 
 start_time = time.time()
 # file_csv = "csv/dataset1_Python+P7.csv"
-file_csv = "csv/dataset2_Python+P7.csv"
-# file_csv = "csv/20_shares.csv"
+# file_csv = "csv/dataset2_Python+P7.csv"
+file_csv = "csv/20_shares.csv"
 MAX_BUDGET = 500
 
 
@@ -62,6 +62,7 @@ def result_display(best_combinations):
     print(f"\nBenefice après 2 ans en pourcentage: {str((total_profit / total_price * 100) * 100)[:5]}", "%")
     print(f"\nBenefice après 2 ans : {total_profit}", "€")
     print("\nTemps d'éxecution : ", str(time.time() - start_time)[:4], "secondes")
+    print(f"\nMémoire utilisé : {psutil.Process().memory_info().rss / 1024 ** 2}", "MB")
 
 
 def main():
