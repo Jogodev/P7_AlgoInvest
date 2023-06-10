@@ -1,17 +1,16 @@
 import time
+
 import psutil
 from tqdm import tqdm
 
 import csv
 
-start_time = time.time()
+MAX_BUDGET = 500
 # file_csv = "csv/dataset1_Python+P7.csv"
 # file_csv = "csv/dataset2_Python+P7.csv"
 file_csv = "csv/20_shares.csv"
-MAX_BUDGET = 500
 
 
-# lire mon csv et créer une liste de dict
 def read_file(path):
     shares = []
     with open(path, mode='r') as csv_file:
@@ -27,6 +26,7 @@ def read_file(path):
 
 
 def knapsack(shares):
+    """Calculate the best profit with a matrix"""
     budget = int(MAX_BUDGET * 100)
     matrix = [[0 for x in range(budget + 1)] for x in range(len(shares) + 1)]
     for i in tqdm(range(1, len(shares) + 1)):
@@ -50,6 +50,7 @@ def knapsack(shares):
 
 
 def result_display(best_combinations):
+    """Display all the results"""
     total_profit = best_combinations[0]
     total_price = best_combinations[1]
     combination = list(best_combinations[2])
@@ -61,14 +62,15 @@ def result_display(best_combinations):
     print(f"\nPrix total : {total_price / 100}", "€")
     print(f"\nBenefice après 2 ans en pourcentage: {str((total_profit / total_price * 100) * 100)[:5]}", "%")
     print(f"\nBenefice après 2 ans : {total_profit}", "€")
-    print("\nTemps d'éxecution : ", str(time.time() - start_time)[:4], "secondes")
     print(f"\nMémoire utilisé : {psutil.Process().memory_info().rss / 1024 ** 2}", "MB")
 
 
 def main():
+    start_time = time.time()
     shares = read_file(file_csv)
     best_combination = knapsack(shares)
     result_display(best_combination)
+    print("\nTemps d'éxecution : ", str(time.time() - start_time)[:4], "secondes")
 
 
 if __name__ == '__main__':
