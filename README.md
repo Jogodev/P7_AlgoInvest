@@ -50,4 +50,4 @@ $ python optimized.py
 #### Cette commande fera le calcul du fichier csv de 20 actions pour un montant total de 500 €.
 #### Pour lancer le programme sur un autre dataset décommenter celui_ci en haut du ficher optimized.py
 
-![comment.png](..%2Fcomment.png)
+![comment.png](images/comment.png)
