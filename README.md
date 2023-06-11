@@ -17,7 +17,7 @@ $ cd P7_algo_invest
 $ python -m venv env
 ````
 
-### Activater l'environnement virtuel
+### Activer l'environnement virtuel
 
 #### Windows
 ````bash
